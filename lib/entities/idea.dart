@@ -1,5 +1,3 @@
-import 'dart:io';
-
 class Idea {
   String title;
   String id;
@@ -13,14 +11,12 @@ class Idea {
     required this.steps,
   });
 
-  factory Idea.fromJson(Map<String, dynamic> json) {
-    String locale = Platform.localeName;
-    locale = "es";
+  factory Idea.fromJson(Map<String, dynamic> json, String langCode) {
     return Idea(
       id: json['id'],
       title: json['title'],
-      description: json['description'][locale],
-      steps: json['steps'][locale].cast<String>(),
+      description: json['description'][langCode],
+      steps: json['steps'][langCode].cast<String>(),
     );
   }
 }
