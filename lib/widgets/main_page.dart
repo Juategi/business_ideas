@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:business_ideas/entities/idea.dart';
 import 'package:business_ideas/main.dart';
 import 'package:business_ideas/repositories/idea_repository.dart';
@@ -13,9 +14,8 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  IdeaRepository ideaRepository = GetIt.I<IdeaRepository>();
-  LocaleRepository localeRepository = GetIt.I<LocaleRepository>();
-  //Future<List<Idea>> ideas = IdeaRepository().getIdeas();
+  final IdeaRepository ideaRepository = GetIt.I<IdeaRepository>();
+  final LocaleRepository localeRepository = GetIt.I<LocaleRepository>();
 
   @override
   Widget build(BuildContext context) {
@@ -46,9 +46,37 @@ class _MainPageState extends State<MainPage> {
             return ListView.builder(
               itemCount: ideas.length,
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(ideas[index].title),
-                  subtitle: Text(ideas[index].description),
+                return OpenContainer(
+                  transitionDuration: const Duration(seconds: 1),
+                  transitionType: ContainerTransitionType.fade,
+                  closedBuilder: (context, action) {
+                    return ListTile(
+                      title: Text(ideas[index].title),
+                      subtitle: Text(ideas[index].description),
+                    );
+                  },
+                  openBuilder: (context, action) {
+                    return Scaffold(
+                      appBar: AppBar(
+                        title: Text(ideas[index].title),
+                      ),
+                      body: Column(
+                        children: [
+                          Text(ideas[index].description),
+                          Expanded(
+                            child: ListView.builder(
+                              itemCount: ideas[index].steps.length,
+                              itemBuilder: (context, index2) {
+                                return ListTile(
+                                  title: Text(ideas[index].steps[index2]),
+                                );
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
                 );
               },
             );
