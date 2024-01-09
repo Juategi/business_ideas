@@ -3,6 +3,12 @@
     {
       "id" : "1",
       "title": "EcoMarket",
+      "smallDescription": {
+        "es": "Compra productos sostenibles en línea",
+        "en": "Shop sustainable products online",
+        "fr": "Achetez des produits durables en ligne",
+        "de": "Nachhaltige Produkte online kaufen"
+      },
       "description": {
         "es": "Plataforma de comercio electrónico centrada en productos ecológicos y sostenibles. EcoMarket busca ofrecer a los consumidores una amplia variedad de productos respetuosos con el medio ambiente, desde alimentos hasta artículos de hogar y moda. La plataforma también proporcionará información detallada sobre la sostenibilidad de cada producto, destacando su impacto positivo en el medio ambiente. Además, EcoMarket establecerá alianzas con fabricantes y proveedores comprometidos con prácticas sostenibles para garantizar la autenticidad de los productos ofrecidos.",
         "en": "EcoMarket is an e-commerce platform focused on ecological and sustainable products. EcoMarket aims to provide consumers with a wide variety of environmentally friendly products, from food to household and fashion items. The platform will also provide detailed information about the sustainability of each product, highlighting its positive impact on the environment. Additionally, EcoMarket will establish partnerships with manufacturers and suppliers committed to sustainable practices to ensure the authenticity of the products offered.",
@@ -63,6 +69,12 @@
     {
         "id" : "2",
         "title": "EcoFashionSwap",
+        "smallDescription": {
+          "es": "Compra productos sostenibles en línea",
+          "en": "Shop sustainable products online",
+          "fr": "Achetez des produits durables en ligne",
+          "de": "Nachhaltige Produkte online kaufen"
+        },
         "description": {
           "es": "Plataforma de intercambio de moda sostenible. EcoFashionSwap permite a los usuarios intercambiar prendas de vestir y accesorios de moda que ya no utilizan por artículos similares de otros usuarios. La plataforma promueve la economía circular y la reducción del consumo textil, fomentando un estilo de vida sostenible. Además, EcoFashionSwap incluirá recursos educativos sobre moda sostenible y prácticas éticas en la industria textil.",
           "en": "EcoFashionSwap is a sustainable fashion exchange platform. EcoFashionSwap allows users to exchange clothing and fashion accessories they no longer use for similar items from other users. The platform promotes circular economy principles and reduces textile consumption, encouraging a sustainable lifestyle. Additionally, EcoFashionSwap will include educational resources on sustainable fashion and ethical practices in the textile industry.",

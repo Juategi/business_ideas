@@ -8,13 +8,14 @@ class IdeaRepository {
   Future<List<Idea>> getIdeas() async {
     String jsonString = await rootBundle.loadString('test.json');
     List<dynamic> jsonList = json.decode(jsonString)["ideas"];
-    List<Idea> ideas = jsonList.map((e) => loadIdea(e)).toList();
+    Category category = Category.tech;
+    List<Idea> ideas = jsonList.map((e) => loadIdea(e, category)).toList();
     return ideas;
   }
 
-  Idea loadIdea(dynamic json) {
+  Idea loadIdea(dynamic json, Category category) {
     LocaleRepository localeRepository = GetIt.I<LocaleRepository>();
-    Idea idea = Idea.fromJson(json, localeRepository.getLangCode());
+    Idea idea = Idea.fromJson(json, localeRepository.getLangCode(), category);
     return idea;
   }
 }
