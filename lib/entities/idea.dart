@@ -30,11 +30,17 @@ class Idea {
 
 enum Category {
   tech,
+  webs,
   ecommerce,
   food,
   health,
   education,
-  entertainment,
+  music,
+  art,
+  sports,
+  videogames,
+  ai,
+  vr,
   professional,
   turism,
   environment,
