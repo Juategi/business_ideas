@@ -43,9 +43,9 @@ enum Category {
   vr,
   professional,
   turism,
-  environment,
   fashion,
   finances,
+  environment,
   mobility,
   realState,
 }
