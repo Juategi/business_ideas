@@ -25,10 +25,13 @@ class IdeaPage extends ConsumerWidget {
             child: ListView(
               children: [
                 Text(idea.description),
+                const SizedBox(height: 16),
                 Column(
                   children: idea.steps
                       .map((e) => ListTile(
-                            title: Text(e),
+                            leading: const Icon(Icons.circle, size: 10),
+                            title:
+                                Text(e, style: const TextStyle(fontSize: 18)),
                           ))
                       .toList(),
                 )

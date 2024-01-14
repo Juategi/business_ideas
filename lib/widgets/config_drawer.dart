@@ -6,40 +6,61 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
 
 class ConfigDrawer {
+  static final LocaleRepository localeRepository = GetIt.I<LocaleRepository>();
   static Drawer getDrawer(BuildContext context, WidgetRef ref) {
     return Drawer(
-      child: ListView(
-        children: [
-          ListTile(
-            title: const Text('English'),
-            onTap: () => _changeLocale(context, "en", ref),
-          ),
-          ListTile(
-            title: const Text('Español'),
-            onTap: () => _changeLocale(context, "es", ref),
-          ),
-          ListTile(
-            title: const Text('Deutsch'),
-            onTap: () => _changeLocale(context, "de", ref),
-          ),
-          ListTile(
-            title: const Text('Français'),
-            onTap: () => _changeLocale(context, "fr", ref),
-          ),
-          IconButton(
-            icon: const Icon(Icons.light_mode),
-            onPressed: () {
-              MyApp.of(context).changeTheme();
-            },
-          ),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                const Icon(Icons.language),
+                const SizedBox(width: 16),
+                DropdownButton<String>(
+                  value: localeRepository.getLangCode(),
+                  onChanged: (String? langCode) {
+                    if (langCode != null) {
+                      _changeLocale(context, langCode, ref);
+                    }
+                  },
+                  underline: const SizedBox(),
+                  items: const [
+                    DropdownMenuItem(
+                      value: "en",
+                      child: Text('English'),
+                    ),
+                    DropdownMenuItem(
+                      value: "es",
+                      child: Text('Español'),
+                    ),
+                    DropdownMenuItem(
+                      value: "de",
+                      child: Text('Deutsch'),
+                    ),
+                    DropdownMenuItem(
+                      value: "fr",
+                      child: Text('Français'),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            /*IconButton(
+              icon: const Icon(Icons.light_mode),
+              onPressed: () {
+                MyApp.of(context).changeTheme();
+              },
+            ),
+            */
+          ],
+        ),
       ),
     );
   }
 
   static void _changeLocale(
       BuildContext context, String langCode, WidgetRef ref) {
-    LocaleRepository localeRepository = GetIt.I<LocaleRepository>();
     Navigator.pop(context);
     localeRepository.setLangCode(langCode);
     MyApp.of(context).setLocale(Locale.fromSubtags(languageCode: langCode));
