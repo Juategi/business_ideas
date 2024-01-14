@@ -36,7 +36,7 @@ class _MainPageState extends State<MainPage> {
         ),
         iconTheme: const IconThemeData(
           color: Colors.white,
-        ), // Set the icon color to white
+        ),
       ),
       endDrawer: ConfigDrawer.getDrawer(context),
       body: FutureBuilder(
