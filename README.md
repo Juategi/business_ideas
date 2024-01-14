@@ -2,9 +2,8 @@
 
 TODO: 
     design
-    tener solo subcategorias, pero usar codigo de colores para grupar
+    usar riverpod
     generate ideas
-    config drawer
     favorites (local db)
     web version
     ads

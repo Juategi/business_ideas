@@ -2,6 +2,7 @@
 
 import 'package:business_ideas/config/di.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'widgets/main_page.dart';
 
 void main() {
@@ -26,32 +27,34 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
-        useMaterial3: true,
-        textTheme: const TextTheme(
-          bodyLarge: TextStyle(fontSize: 24.0),
-          bodyMedium: TextStyle(fontSize: 18.0),
-          bodySmall: TextStyle(fontSize: 14.0),
-          displayLarge: TextStyle(fontSize: 48.0),
-          displayMedium: TextStyle(fontSize: 36.0),
-          displaySmall: TextStyle(fontSize: 24.0),
-          headlineLarge: TextStyle(fontSize: 24.0),
-          headlineMedium: TextStyle(fontSize: 18.0),
-          headlineSmall: TextStyle(fontSize: 14.0),
-          titleLarge: TextStyle(fontSize: 24.0),
-          titleMedium: TextStyle(fontSize: 18.0),
-          titleSmall: TextStyle(fontSize: 14.0),
-          labelLarge: TextStyle(fontSize: 24.0),
-          labelMedium: TextStyle(fontSize: 18.0),
-          labelSmall: TextStyle(fontSize: 14.0),
+    return ProviderScope(
+      child: MaterialApp(
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
+          useMaterial3: true,
+          textTheme: const TextTheme(
+            bodyLarge: TextStyle(fontSize: 24.0),
+            bodyMedium: TextStyle(fontSize: 18.0),
+            bodySmall: TextStyle(fontSize: 14.0),
+            displayLarge: TextStyle(fontSize: 48.0),
+            displayMedium: TextStyle(fontSize: 36.0),
+            displaySmall: TextStyle(fontSize: 24.0),
+            headlineLarge: TextStyle(fontSize: 24.0),
+            headlineMedium: TextStyle(fontSize: 18.0),
+            headlineSmall: TextStyle(fontSize: 14.0),
+            titleLarge: TextStyle(fontSize: 24.0),
+            titleMedium: TextStyle(fontSize: 18.0),
+            titleSmall: TextStyle(fontSize: 14.0),
+            labelLarge: TextStyle(fontSize: 24.0),
+            labelMedium: TextStyle(fontSize: 18.0),
+            labelSmall: TextStyle(fontSize: 14.0),
+          ),
         ),
+        darkTheme: ThemeData.dark(),
+        themeMode: _themeMode,
+        locale: _locale,
+        home: MainPage(),
       ),
-      darkTheme: ThemeData.dark(),
-      themeMode: _themeMode,
-      locale: _locale,
-      home: MainPage(),
     );
   }
 

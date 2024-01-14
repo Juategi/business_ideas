@@ -1,49 +1,30 @@
 import 'package:business_ideas/main.dart';
+import 'package:business_ideas/repositories/idea_provider.dart';
 import 'package:business_ideas/repositories/locale_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
 
 class ConfigDrawer {
-  static Drawer getDrawer(BuildContext context) {
-    final LocaleRepository localeRepository = GetIt.I<LocaleRepository>();
+  static Drawer getDrawer(BuildContext context, WidgetRef ref) {
     return Drawer(
       child: ListView(
         children: [
           ListTile(
             title: const Text('English'),
-            onTap: () {
-              Navigator.pop(context);
-              localeRepository.setLangCode("en");
-              MyApp.of(context)
-                  .setLocale(const Locale.fromSubtags(languageCode: 'en'));
-            },
+            onTap: () => _changeLocale(context, "en", ref),
           ),
           ListTile(
             title: const Text('Español'),
-            onTap: () {
-              Navigator.pop(context);
-              localeRepository.setLangCode("es");
-              MyApp.of(context)
-                  .setLocale(const Locale.fromSubtags(languageCode: 'es'));
-            },
+            onTap: () => _changeLocale(context, "es", ref),
           ),
           ListTile(
             title: const Text('Deutsch'),
-            onTap: () {
-              Navigator.pop(context);
-              localeRepository.setLangCode("de");
-              MyApp.of(context)
-                  .setLocale(const Locale.fromSubtags(languageCode: 'de'));
-            },
+            onTap: () => _changeLocale(context, "de", ref),
           ),
           ListTile(
             title: const Text('Français'),
-            onTap: () {
-              Navigator.pop(context);
-              localeRepository.setLangCode("fr");
-              MyApp.of(context)
-                  .setLocale(const Locale.fromSubtags(languageCode: 'fr'));
-            },
+            onTap: () => _changeLocale(context, "fr", ref),
           ),
           IconButton(
             icon: const Icon(Icons.light_mode),
@@ -54,5 +35,14 @@ class ConfigDrawer {
         ],
       ),
     );
+  }
+
+  static void _changeLocale(
+      BuildContext context, String langCode, WidgetRef ref) {
+    LocaleRepository localeRepository = GetIt.I<LocaleRepository>();
+    Navigator.pop(context);
+    localeRepository.setLangCode(langCode);
+    MyApp.of(context).setLocale(Locale.fromSubtags(languageCode: langCode));
+    ref.read(asyncIdeaProvider.notifier).refresh();
   }
 }
