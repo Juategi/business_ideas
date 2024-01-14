@@ -20,28 +20,55 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Business Ideas"),
+        title: const Text(
+          "Business Ideas",
+          style: TextStyle(fontSize: 24, color: Colors.white),
+        ),
+        backgroundColor: Colors.transparent,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.purple.shade800, Colors.purple.shade500],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
+          ),
+        ),
+        iconTheme: const IconThemeData(
+          color: Colors.white,
+        ), // Set the icon color to white
       ),
       endDrawer: ConfigDrawer.getDrawer(context),
       body: FutureBuilder(
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             List<Idea> ideas = snapshot.data as List<Idea>;
-            return ListView.builder(
-              itemCount: Category.values.length,
-              itemBuilder: (context, index) {
-                return OpenContainer(
-                  transitionDuration: const Duration(seconds: 1),
-                  transitionType: ContainerTransitionType.fade,
-                  closedBuilder: (context, action) {
-                    return CategoryTile(category: Category.values[index]);
-                  },
-                  openBuilder: (context, action) {
-                    return IdeasList(
-                        ideas: ideas, category: Category.values[index]);
-                  },
-                );
-              },
+            return Container(
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20.0),
+                ),
+              ),
+              child: ListView.builder(
+                itemCount: Category.values.length,
+                itemBuilder: (context, index) {
+                  return OpenContainer(
+                    transitionDuration: const Duration(seconds: 1),
+                    transitionType: ContainerTransitionType.fade,
+                    closedColor: Colors.white,
+                    middleColor: Colors.white,
+                    openColor: Colors.transparent,
+                    closedBuilder: (context, action) {
+                      return CategoryTile(category: Category.values[index]);
+                    },
+                    openBuilder: (context, action) {
+                      return IdeasList(
+                          ideas: ideas, category: Category.values[index]);
+                    },
+                  );
+                },
+              ),
             );
           } else {
             return const Center(child: CircularProgressIndicator());
