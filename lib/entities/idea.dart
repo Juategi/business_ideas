@@ -47,5 +47,5 @@ enum Category {
   finances,
   environment,
   mobility,
-  realState,
+  realState
 }

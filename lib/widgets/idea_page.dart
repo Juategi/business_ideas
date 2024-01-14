@@ -1,5 +1,5 @@
 import 'package:business_ideas/entities/idea.dart';
-import 'package:business_ideas/widgets/top_app_bar.dart';
+import 'package:business_ideas/widgets/config_drawer.dart';
 import 'package:flutter/material.dart';
 
 class IdeaPage extends StatelessWidget {
@@ -8,7 +8,10 @@ class IdeaPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: TopAppBar().build(context),
+      appBar: AppBar(
+        title: Text(idea.title),
+      ),
+      endDrawer: ConfigDrawer.getDrawer(context),
       body: Column(
         children: [
           Text(idea.description),

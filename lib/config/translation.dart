@@ -25,7 +25,7 @@ class Translation {
       case Category.tech:
         return 'Tecnología';
       case Category.webs:
-        return 'Sitios web';
+        return 'Sitios web y apps';
       case Category.ecommerce:
         return 'Comercio electrónico';
       case Category.food:
@@ -59,7 +59,7 @@ class Translation {
       case Category.mobility:
         return 'Movilidad';
       case Category.realState:
-        return 'Bienes raíces';
+        return 'Inmobiliaria';
       default:
         return '';
     }
@@ -70,7 +70,7 @@ class Translation {
       case Category.tech:
         return 'Technology';
       case Category.webs:
-        return 'Websites';
+        return 'Websites and apps';
       case Category.ecommerce:
         return 'Ecommerce';
       case Category.food:
@@ -115,7 +115,7 @@ class Translation {
       case Category.tech:
         return 'Technologie';
       case Category.webs:
-        return 'Sites web';
+        return 'Sites web et applications';
       case Category.ecommerce:
         return 'Commerce électronique';
       case Category.food:
@@ -160,7 +160,7 @@ class Translation {
       case Category.tech:
         return 'Technologie';
       case Category.webs:
-        return 'Websites';
+        return 'Websites und Apps';
       case Category.ecommerce:
         return 'E-Commerce';
       case Category.food:

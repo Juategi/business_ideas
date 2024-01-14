@@ -1,12 +1,11 @@
 import 'package:animations/animations.dart';
 import 'package:business_ideas/entities/idea.dart';
 import 'package:business_ideas/repositories/idea_repository.dart';
+import 'package:business_ideas/widgets/config_drawer.dart';
 import 'package:business_ideas/widgets/ideas_list.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-
 import 'category_tile.dart';
-import 'top_app_bar.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -17,11 +16,13 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   final IdeaRepository ideaRepository = GetIt.I<IdeaRepository>();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: TopAppBar().build(context),
+      appBar: AppBar(
+        title: const Text("Business Ideas"),
+      ),
+      endDrawer: ConfigDrawer.getDrawer(context),
       body: FutureBuilder(
         builder: (context, snapshot) {
           if (snapshot.hasData) {
@@ -36,7 +37,8 @@ class _MainPageState extends State<MainPage> {
                     return CategoryTile(category: Category.values[index]);
                   },
                   openBuilder: (context, action) {
-                    return IdeasList(ideas: ideas);
+                    return IdeasList(
+                        ideas: ideas, category: Category.values[index]);
                   },
                 );
               },
