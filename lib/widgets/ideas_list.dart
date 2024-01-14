@@ -3,6 +3,7 @@ import 'package:business_ideas/config/colors.dart';
 import 'package:business_ideas/config/translation.dart';
 import 'package:business_ideas/entities/idea.dart';
 import 'package:business_ideas/widgets/config_drawer.dart';
+import 'package:business_ideas/widgets/top_bar.dart';
 import 'package:flutter/material.dart';
 
 import 'idea_page.dart';
@@ -15,28 +16,8 @@ class IdeasList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          Translation.translateCategory(category),
-          style: const TextStyle(fontSize: 24, color: Colors.white),
-        ),
-        backgroundColor: Colors.transparent,
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                AppColors.categoryColors[category]!,
-                AppColors.categoryColors[category]!.withOpacity(0.8)
-              ],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ),
-          ),
-        ),
-        iconTheme: const IconThemeData(
-          color: Colors.white,
-        ),
-      ),
+      appBar: TopBar.build(Translation.translateCategory(category),
+          AppColors.categoryColors[category]!),
       endDrawer: ConfigDrawer.getDrawer(context),
       body: ListView.builder(
         itemCount: ideas.length,

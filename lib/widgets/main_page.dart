@@ -3,6 +3,7 @@ import 'package:business_ideas/entities/idea.dart';
 import 'package:business_ideas/repositories/idea_repository.dart';
 import 'package:business_ideas/widgets/config_drawer.dart';
 import 'package:business_ideas/widgets/ideas_list.dart';
+import 'package:business_ideas/widgets/top_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'category_tile.dart';
@@ -19,25 +20,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "Business Ideas",
-          style: TextStyle(fontSize: 24, color: Colors.white),
-        ),
-        backgroundColor: Colors.transparent,
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.purple.shade800, Colors.purple.shade500],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ),
-          ),
-        ),
-        iconTheme: const IconThemeData(
-          color: Colors.white,
-        ),
-      ),
+      appBar: TopBar.build("Business Ideas", Colors.purple.shade800),
       endDrawer: ConfigDrawer.getDrawer(context),
       body: FutureBuilder(
         builder: (context, snapshot) {
