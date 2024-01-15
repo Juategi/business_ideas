@@ -27,8 +27,8 @@ class IdeasList extends ConsumerWidget {
             itemBuilder: (context, index) {
               Idea idea = value[category]![index];
               return OpenContainer(
-                transitionDuration: const Duration(seconds: 1),
-                transitionType: ContainerTransitionType.fade,
+                transitionDuration: const Duration(milliseconds: 1000),
+                transitionType: ContainerTransitionType.fadeThrough,
                 closedBuilder: (context, action) {
                   return IdeaTile(idea: idea);
                 },

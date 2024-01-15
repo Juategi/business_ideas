@@ -1,4 +1,5 @@
 import 'package:business_ideas/entities/idea.dart';
+import 'package:business_ideas/widgets/favorite_button.dart';
 import 'package:flutter/material.dart';
 
 class IdeaTile extends StatelessWidget {
@@ -43,6 +44,8 @@ class IdeaTile extends StatelessWidget {
                     ),
                   ],
                 ),
+                const Spacer(),
+                FavoriteButton(idea: idea)
               ],
             ),
           ),

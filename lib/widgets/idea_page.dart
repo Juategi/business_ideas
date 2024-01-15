@@ -2,6 +2,7 @@ import 'package:business_ideas/config/colors.dart';
 import 'package:business_ideas/entities/idea.dart';
 import 'package:business_ideas/repositories/idea_provider.dart';
 import 'package:business_ideas/widgets/config_drawer.dart';
+import 'package:business_ideas/widgets/favorite_button.dart';
 import 'package:business_ideas/widgets/top_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -10,6 +11,7 @@ class IdeaPage extends ConsumerWidget {
   const IdeaPage({super.key, required this.id, required this.category});
   final String id;
   final Category category;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final asyncIdeas = ref.watch(asyncIdeaProvider);
@@ -18,7 +20,10 @@ class IdeaPage extends ConsumerWidget {
         Idea idea = ideas[category]!.firstWhere((element) => element.id == id);
         return Scaffold(
           appBar: TopBar.build(
-              idea.title, AppColors.categoryColors[idea.category]!),
+            idea.title,
+            AppColors.categoryColors[idea.category]!,
+            endWidget: FavoriteButton(idea: idea),
+          ),
           endDrawer: ConfigDrawer.getDrawer(context, ref),
           body: Padding(
             padding: const EdgeInsets.all(26),

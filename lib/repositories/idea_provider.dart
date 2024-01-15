@@ -10,17 +10,17 @@ import 'package:riverpod/riverpod.dart';
 class IdeaNotifier extends AsyncNotifier<Map<Category, List<Idea>>> {
   @override
   FutureOr<Map<Category, List<Idea>>> build() {
-    return getIdeas();
+    return _getIdeas();
   }
 
   Future<void> refresh() async {
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
-      return getIdeas();
+      return _getIdeas();
     });
   }
 
-  Future<Map<Category, List<Idea>>> getIdeas() async {
+  Future<Map<Category, List<Idea>>> _getIdeas() async {
     Map<Category, List<Idea>> ideas = {};
     String jsonString = await rootBundle.loadString('test.json');
     List<dynamic> jsonList = json.decode(jsonString)["ideas"];

@@ -2,9 +2,7 @@
 
 TODO: 
     design
-    usar riverpod
     generate ideas
-    favorites (local db)
     web version
     ads
     update available in mobile alert
