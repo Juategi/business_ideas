@@ -20,6 +20,59 @@ class Translation {
     }
   }
 
+  static String translateText(String text) {
+    LocaleRepository localeRepository = GetIt.I<LocaleRepository>();
+    String langCode = localeRepository.getLangCode();
+    switch (langCode) {
+      case 'es':
+        return _translateTextToSpanish(text);
+      case 'en':
+        return _translateTextToEnglish(text);
+      case 'de':
+        return _translateTextToGerman(text);
+      case 'fr':
+        return _translateTextToFrench(text);
+      default:
+        return '';
+    }
+  }
+
+  static String _translateTextToSpanish(String text) {
+    switch (text) {
+      case "favorites":
+        return "Favoritos";
+      default:
+        return '';
+    }
+  }
+
+  static String _translateTextToEnglish(String text) {
+    switch (text) {
+      case "favorites":
+        return "Favorites";
+      default:
+        return '';
+    }
+  }
+
+  static String _translateTextToFrench(String text) {
+    switch (text) {
+      case "favorites":
+        return "Favoris";
+      default:
+        return '';
+    }
+  }
+
+  static String _translateTextToGerman(String text) {
+    switch (text) {
+      case "favorites":
+        return "Favoriten";
+      default:
+        return '';
+    }
+  }
+
   static String _translateCategoryToSpanish(Category category) {
     switch (category) {
       case Category.tech:

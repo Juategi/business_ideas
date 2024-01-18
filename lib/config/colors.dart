@@ -23,4 +23,6 @@ class AppColors {
     Category.mobility: Color(0xFFe67e22),
     Category.realState: Color(0xFFe67e22),
   };
+
+  static Color appBarColor = Colors.purple.shade800;
 }

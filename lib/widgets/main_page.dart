@@ -1,4 +1,5 @@
 import 'package:animations/animations.dart';
+import 'package:business_ideas/config/colors.dart';
 import 'package:business_ideas/entities/idea.dart';
 import 'package:business_ideas/repositories/idea_provider.dart';
 import 'package:business_ideas/widgets/config_drawer.dart';
@@ -16,7 +17,7 @@ class MainPage extends ConsumerWidget {
     final asyncIdeas = ref.watch(asyncIdeaProvider);
     return switch (asyncIdeas) {
       AsyncData() => Scaffold(
-          appBar: TopBar.build("Business Ideas", Colors.purple.shade800),
+          appBar: TopBar.build("Business Ideas", AppColors.appBarColor),
           endDrawer: ConfigDrawer.getDrawer(context, ref),
           body: Container(
             decoration: const BoxDecoration(

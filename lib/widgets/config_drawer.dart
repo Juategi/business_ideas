@@ -1,3 +1,5 @@
+import 'package:animations/animations.dart';
+import 'package:business_ideas/config/translation.dart';
 import 'package:business_ideas/main.dart';
 import 'package:business_ideas/repositories/idea_provider.dart';
 import 'package:business_ideas/repositories/locale_repository.dart';
@@ -5,10 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
 
+import 'favorites_page.dart';
+
 class ConfigDrawer {
   static final LocaleRepository localeRepository = GetIt.I<LocaleRepository>();
   static Drawer getDrawer(BuildContext context, WidgetRef ref) {
+    Color backgroundColor = Colors.white;
     return Drawer(
+      backgroundColor: backgroundColor,
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -46,13 +52,28 @@ class ConfigDrawer {
                 ),
               ],
             ),
-            /*IconButton(
-              icon: const Icon(Icons.light_mode),
-              onPressed: () {
-                MyApp.of(context).changeTheme();
+            const SizedBox(height: 16),
+            OpenContainer(
+              transitionDuration: const Duration(milliseconds: 1000),
+              transitionType: ContainerTransitionType.fadeThrough,
+              closedColor: backgroundColor.withOpacity(0),
+              closedElevation: 0,
+              closedBuilder: (context, action) {
+                return MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: Row(
+                    children: [
+                      const Icon(Icons.favorite),
+                      const SizedBox(width: 16),
+                      Text(Translation.translateText("favorites")),
+                    ],
+                  ),
+                );
+              },
+              openBuilder: (context, action) {
+                return const FavoritePage();
               },
             ),
-            */
           ],
         ),
       ),
