@@ -1,9 +1,7 @@
 # business_ideas
 
 TODO: 
-    design
     generate ideas
-    web version
     ads
     update available in mobile alert
     search bar
