@@ -22,7 +22,7 @@ class IdeaNotifier extends AsyncNotifier<Map<Category, List<Idea>>> {
 
   Future<Map<Category, List<Idea>>> _getIdeas() async {
     Map<Category, List<Idea>> ideas = {};
-    String jsonString = await rootBundle.loadString('test.json');
+    String jsonString = await rootBundle.loadString('assets/test.json');
     List<dynamic> jsonList = json.decode(jsonString)["ideas"];
     for (Category category in Category.values) {
       ideas[category] = jsonList.map((e) => _loadIdea(e, category)).toList();

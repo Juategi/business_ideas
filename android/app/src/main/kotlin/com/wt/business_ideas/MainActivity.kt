@@ -1,4 +1,4 @@
-package com.example.business_ideas
+package com.wt.business_ideas
 
 import io.flutter.embedding.android.FlutterActivity
 
