@@ -3,6 +3,7 @@ import 'package:business_ideas/config/colors.dart';
 import 'package:business_ideas/config/translation.dart';
 import 'package:business_ideas/entities/idea.dart';
 import 'package:business_ideas/repositories/idea_provider.dart';
+import 'package:business_ideas/widgets/ad_example.dart';
 import 'package:business_ideas/widgets/config_drawer.dart';
 import 'package:business_ideas/widgets/top_bar.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +31,9 @@ class IdeasList extends ConsumerWidget {
                 transitionDuration: const Duration(milliseconds: 1000),
                 transitionType: ContainerTransitionType.fadeThrough,
                 closedBuilder: (context, action) {
+                  if (index == 1) {
+                    return const NativeExample();
+                  }
                   return IdeaTile(idea: idea);
                 },
                 openBuilder: (context, action) {

@@ -4,10 +4,11 @@ import 'package:business_ideas/config/di.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'widgets/main_page.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  // MobileAds.instance.initialize();
+  MobileAds.instance.initialize();
   DependencyInjection.setup();
   runApp(const MyApp());
 }
@@ -31,7 +32,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return ProviderScope(
       child: MaterialApp(
-        //debugShowCheckedModeBanner: false,
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
           useMaterial3: true,

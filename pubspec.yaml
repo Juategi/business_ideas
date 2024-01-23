@@ -41,7 +41,7 @@ dependencies:
   riverpod: ^2.4.9
   flutter_riverpod: ^2.4.9
   shared_preferences: ^2.2.2
-  #google_mobile_ads: ^4.0.0
+  google_mobile_ads: ^4.0.0
 
 dev_dependencies:
   flutter_test:
