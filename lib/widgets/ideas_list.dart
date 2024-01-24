@@ -24,19 +24,20 @@ class IdeasList extends ConsumerWidget {
               AppColors.categoryColors[category]!),
           endDrawer: ConfigDrawer.getDrawer(context, ref),
           body: ListView.builder(
-            itemCount: value[category]!.length,
+            itemCount: value[category]!.length * 2,
             itemBuilder: (context, index) {
-              Idea idea = value[category]![index];
               return OpenContainer(
                 transitionDuration: const Duration(milliseconds: 1000),
                 transitionType: ContainerTransitionType.fadeThrough,
                 closedBuilder: (context, action) {
-                  if (index == 1) {
+                  if (index == 2 || index == 3) {
                     return const NativeExample();
                   }
+                  Idea idea = value[category]![index];
                   return IdeaTile(idea: idea);
                 },
                 openBuilder: (context, action) {
+                  Idea idea = value[category]![index];
                   return IdeaPage(id: idea.id, category: idea.category);
                 },
               );

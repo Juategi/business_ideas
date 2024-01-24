@@ -17,6 +17,7 @@ class _NativeExampleState extends State<NativeExample> {
   // TODO: replace this test ad unit with your own ad unit.
   final String _adUnitId = Platform.isAndroid
       ? 'ca-app-pub-8550647653356634/9701587398'
+      //? 'ca-app-pub-3940256099942544/2247696110'
       : 'ca-app-pub-3940256099942544/3986624511';
 
   @override
@@ -46,28 +47,28 @@ class _NativeExampleState extends State<NativeExample> {
         // Styling
         nativeTemplateStyle: NativeTemplateStyle(
             // Required: Choose a template.
-            templateType: TemplateType.medium,
+            templateType: TemplateType.small,
             // Optional: Customize the ad's style.
-            mainBackgroundColor: Colors.purple,
-            cornerRadius: 10.0,
+            mainBackgroundColor: Colors.grey[100],
+            cornerRadius: 12,
             callToActionTextStyle: NativeTemplateTextStyle(
                 textColor: Colors.cyan,
-                backgroundColor: Colors.red,
+                backgroundColor: Colors.grey[100],
                 style: NativeTemplateFontStyle.monospace,
                 size: 16.0),
             primaryTextStyle: NativeTemplateTextStyle(
                 textColor: Colors.red,
-                backgroundColor: Colors.cyan,
+                backgroundColor: Colors.grey[100],
                 style: NativeTemplateFontStyle.italic,
                 size: 16.0),
             secondaryTextStyle: NativeTemplateTextStyle(
                 textColor: Colors.green,
-                backgroundColor: Colors.black,
+                backgroundColor: Colors.grey[100],
                 style: NativeTemplateFontStyle.bold,
                 size: 16.0),
             tertiaryTextStyle: NativeTemplateTextStyle(
                 textColor: Colors.brown,
-                backgroundColor: Colors.amber,
+                backgroundColor: Colors.grey[100],
                 style: NativeTemplateFontStyle.normal,
                 size: 16.0)))
       ..load();
@@ -78,9 +79,15 @@ class _NativeExampleState extends State<NativeExample> {
     return nativeAd == null
         ? const SizedBox()
         : _nativeAdIsLoaded
-            ? SizedBox(
-                height: 300,
-                child: AdWidget(ad: nativeAd!),
+            ? Padding(
+                padding: const EdgeInsets.all(12),
+                child: Container(
+                  height: 100,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      color: Colors.grey[100]),
+                  child: AdWidget(ad: nativeAd!),
+                ),
               )
             : const SizedBox();
   }

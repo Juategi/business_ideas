@@ -1,16 +1,24 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:business_ideas/config/di.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:new_version/new_version.dart';
 import 'widgets/main_page.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  MobileAds.instance.initialize();
-  DependencyInjection.setup();
+  initialization();
   runApp(const MyApp());
+}
+
+void initialization() {
+  WidgetsFlutterBinding.ensureInitialized();
+  if (!kIsWeb) {
+    MobileAds.instance.initialize();
+  }
+  DependencyInjection.setup();
 }
 
 class MyApp extends StatefulWidget {
@@ -30,6 +38,11 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      if (!kIsWeb) {
+        await NewVersion().showAlertIfNecessary(context: context);
+      }
+    });
     return ProviderScope(
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
